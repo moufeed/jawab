@@ -1,0 +1,151 @@
+@mixin if-ltr {
+    @if $dir !=rtl {
+        @content;
+    }
+}
+
+@mixin if-rtl {
+    @if $dir==rtl {
+        @content;
+    }
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+@mixin position($position, $edges, $values) {
+    position: $position;
+
+    @for $i from 1 through length($edges) {
+        #{nth($edges,$i)}: if(length($values)<$i, nth($values, val-length($values, $i)), nth($values, $i));
+    }
+}
+
+@mixin fixed($edges, $values) {
+    @include position(fixed, $edges, $values);
+}
+
+@mixin absolute($edges, $values) {
+    @include position(absolute, $edges, $values);
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin square($size) {
+    @include size($size, $size);
+}
+
+@mixin clearfix {
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    & {
+        zoom: 1;
+    }
+}
+
+@mixin hide-text {
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+@mixin selection {
+    ::-moz-selection {
+        @content;
+    }
+
+    ::selection {
+        @content;
+    }
+}
+
+@mixin ellipse($font-size, $line-height, $lines-to-show , $max-height:false) {
+
+    #{if($max-height,max-height,height)} :$font-size*$line-height*$lines-to-show;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+@mixin makeSpacing($values) {
+    $sides :( t:top , r:right ,b:bottom ,l:left );
+    @each $i in $values {
+        .p-#{$i}{
+            padding: #{$i}px !important;
+        }
+
+        .px-#{$i} {
+            padding-left : #{$i}px !important;
+            padding-right : #{$i}px !important;
+        }
+
+        .py-#{$i} {
+            padding-top : #{$i}px !important;
+            padding-bottom : #{$i}px !important;
+        }
+
+        .m-#{$i}{
+            margin: #{$i}px !important;
+        }
+        .mx-#{$i} {
+            margin-left : #{$i}px !important;
+            margin-right : #{$i}px !important;
+        }
+
+        .my-#{$i} {
+            margin-top : #{$i}px !important;
+            margin-bottom : #{$i}px !important;
+        }
+
+        @each $s in $sides {
+            .p#{nth($s,1)}-#{$i} {
+                padding-#{nth($s,2)} : #{$i}px !important;
+            }
+
+            .m#{nth($s,1)}-#{$i} {
+                margin-#{nth($s,2)} : #{$i}px !important ;
+            }
+        }
+    }
+}
+
+
+@mixin media-ie {
+    //IE10+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      @content;
+    }
+}

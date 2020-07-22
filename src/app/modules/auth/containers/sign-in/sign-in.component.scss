@@ -1,0 +1,21 @@
+
+.sign_in_wrapper{
+
+  padding: 25px;
+
+  h3{
+    color: #111;
+    font-weight: 600;
+    small{
+      color: #999;
+    }
+  }
+  .mat-form-field{
+    width: 100%;
+  }
+
+  .mat-raised-button{
+    padding: 8px 16px;
+    letter-spacing: 1px;
+  }
+}

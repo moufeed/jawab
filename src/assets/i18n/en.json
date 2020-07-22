@@ -1,0 +1,39 @@
+{
+  "AppTitle": "Jawab",
+  "remaining": "remaining",
+  "username": "Username",
+  "full_name": "Full name",
+  "submit": "Submit",
+  "question": "Question",
+  "questions": "Questions",
+  "answer": "Answer",
+  "answers": "Answers",
+  "profile": "Profile",
+  "edit": "Edit",
+  "phoneNumber": "PhoneNumber",
+  "verify": "Verify",
+  "create_profile": "create profile",
+  "errors": {
+    "required": "this field is <strong>required</strong>",
+    "phone_length": "Phone number should be {{value}} digit number.",
+    "invalid_phone_number": "please enter a valid phone number",
+    "minlength": "Please enter {{length}} character",
+    "otp_length": "please enter <b>{{length}}</b> digit otp"
+  },
+  "placeholder": {
+    "phone": "009*****",
+    "full_name": "your full name"
+  },
+
+  "sign_in_view": {
+    "login": "Login",
+    "login_message": "Enter your phone number to proceed"
+  },
+
+  "verification_view": {
+    "verification_code": "Verification Code",
+    "verification_msg": "Please enter the verification code we sent to you phone number {{value}}",
+    "resend_code": "Resend code",
+    "EnterCode": "Enter code"
+  }
+}

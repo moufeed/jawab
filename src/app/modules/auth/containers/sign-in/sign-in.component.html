@@ -1,0 +1,61 @@
+<div class="sign_in_wrapper">
+  <h3>
+    {{ "sign_in_view.login" | translate }}
+    <small>
+      <mat-icon
+        matTooltip="{{ 'sign_in_view.login_message' | translate }}"
+        matTooltipClass="white-tooltip"
+        matTooltipHideDelay="200000"
+        matTooltipPosition="above"
+        >info</mat-icon>
+    </small>
+  </h3>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="sign_in_form">
+      <mat-form-field appearance="outline">
+      <mat-label>{{ 'phoneNumber' | translate }}</mat-label>
+      <input
+        type="tel"
+        ngModel
+        name="phone"
+        matInput
+        minlength = "10"
+        mask="00099 000 000 00 99"
+        required
+        PhoneValidate
+        #tel="ngModel"
+        placeholder="{{ 'placeholder.phone' | translate }}"
+      />
+        <mat-icon matSuffix>smartphone</mat-icon>
+      <mat-error *ngIf="tel.hasError('required')">
+        <span [innerHTML]="'errors.required' | translate"></span>
+      </mat-error>
+      <mat-error *ngIf="tel.hasError('minlength')">
+        <span
+          [translate]="'errors.phone_length'"
+          [translateParams]="{
+            value: tel.getError('minlength')?.requiredLength
+          }"
+        ></span>
+      </mat-error>
+      <mat-error
+        *ngIf="tel.hasError('phoneNumberInvalid') && !tel.hasError('minlength')"
+      >
+        {{ "errors.invalid_phone_number" | translate }}
+      </mat-error>
+    </mat-form-field >
+
+
+
+    <button
+      mat-raised-button
+      type="submit"
+      class="green-btn btn-block submit-btn mt-15"
+      [disabled]="!f.valid"
+    >
+     <span *ngIf="!isLoading">{{ "continue" | translate }}</span>
+     <span *ngIf="isLoading" class="spinner-loading"> <mat-spinner [diameter]="40" [strokeWidth]="2" ></mat-spinner></span>
+    </button>
+
+  </form>
+</div>

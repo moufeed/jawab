@@ -1,0 +1,2 @@
+https://jawab-dev-identity.azurewebsites.net/swagger/index.html
+https://jawab-dev-jawabservice.azurewebsites.net/swagger/index.html

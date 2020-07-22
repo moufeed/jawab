@@ -1,0 +1,58 @@
+<div class="verification_wrapper">
+  <h3>
+    {{ "verification_view.verification_code" | translate }}
+  </h3>
+  <p
+    [translate]="'verification_view.verification_msg'"
+    [translateParams]="{ value: phoneNumber }"
+  ></p>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="verification_form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "verification_view.EnterCode" | translate }}</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="code"
+        matInput
+        mask="0 0 0 0 0 0"
+        required
+        minlength="6"
+        #code="ngModel"
+        placeholder="●  ●  ●  ●  ●  ●"
+      />
+      <mat-error *ngIf="code.hasError('required')">
+        <span [innerHTML]="'errors.required' | translate"></span>
+      </mat-error>
+      <mat-error
+        *ngIf="code.hasError('minlength') && !code.hasError('required')"
+      >
+        <span
+          [innerHTML]="'errors.otp_length' | translate: { length: 6 }"
+        ></span
+      ></mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      type="submit"
+      class="green-btn btn-block submit-btn mt-15"
+      [disabled]="!f.valid"
+    >
+
+      <span *ngIf="!isLoading">{{ "verify" | translate }}</span>
+     <span *ngIf="isLoading" class="spinner-loading"> <mat-spinner [diameter]="40" [strokeWidth]="2" ></mat-spinner></span>
+    </button>
+
+    <div
+      class="resend-code mt-25 d-flex justify-content-between align-items-center"
+    >
+      <button mat-button color="primary" (click)="resendCode()" type="button">
+        {{ "verification_view.resend_code" | translate }}
+      </button>
+      <div *ngIf="timer$ | async; let time">
+        <span>{{ time.m }}:{{ time.s }} {{ "remaining" | translate }}</span>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,161 @@
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@include makeSpacing($lengths);
+
+/**
+flex
+*/
+.flex-in-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+/**
+  buttons
+*/
+.green-btn {
+  background: $light-green;
+  color: $white;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.submit-btn {
+  padding: 6px 12px;
+  border-radius: 15px;
+}
+
+.edit-btn,
+.mat-button.edit-btn {
+  background: rgb(22, 185, 115);
+  display: inline-block;
+  padding: 0 25px;
+  border-radius: 25px;
+  min-width: 150px;
+  & span {
+    color: #fff;
+  }
+}
+
+.send-btn {
+  margin-top: 25px;
+  background: rgb(22, 185, 115);
+  background: linear-gradient(
+    90deg,
+    rgba(22, 185, 115, 1) 0%,
+    rgba(38, 207, 134, 1) 100%
+  );
+  display: block;
+  width: 100%;
+  color: white;
+  padding: 7px 15px;
+  border-radius: 12px;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+.tootlbar-content {
+  button {
+    color: white;
+  }
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .back-icon {
+    color: white;
+  }
+}
+@media screen and(max-width : 767px) {
+  .tootlbar-content {
+    align-items: flex-start;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.overfly-hidden {
+  overflow: hidden;
+}
+.d-inline-block {
+  display: inline-block !important;
+}
+.text-white {
+  color: #fff;
+}
+
+.mat-icon {
+  font-size: 14px;
+}
+.mat-tooltip {
+  &.white-tooltip {
+    color: #111;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(#000, 0.1);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 25px;
+  padding: 25px;
+}
+
+.wrapper {
+  background: #fff;
+  border-radius: 25px;
+  padding: 25px;
+  max-width: 700px;
+  min-width: 50%;
+  min-height: 60%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit , minmax(320px ,1fr));
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 25px rgba(black, 0.05);
+}
+
+.spinner-loading{
+  display: inline-flex;
+  margin-top: 3px;
+}
+.full-bg{
+  height: 100vh;
+  width: 100vw;
+  background: #f9f9f9 url("/assets/img/background.svg") center bottom no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

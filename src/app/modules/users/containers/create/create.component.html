@@ -1,0 +1,69 @@
+<section class="users-section full-bg">
+  <form #form="ngForm" (submit)="onSubmit(form.value)" class="create-form card">
+    <div class="avatar">
+      <div class="upload-zone">
+        <picture #avatar>
+          <img src="{{ ImgSrc }}" alt="" />
+        </picture>
+        <label for="file">
+          <input
+            type="file"
+            name="avatar"
+            id="file"
+            ngModel
+            #file
+            (change)="ChangeFile(file.files[0])"
+            accept="image/x-png,image/jpeg"
+          />
+         <mat-icon>crop_free</mat-icon>
+        </label>
+      </div>
+    </div>
+    <div class="u-content">
+        <h3>  {{ "create_profile" | translate }}</h3>
+       <mat-form-field appearance="outline">
+      <mat-label>{{ 'full_name' | translate }}</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="full_name"
+        matInput
+
+        required
+
+        #tel="ngModel"
+        placeholder="{{ 'placeholder.full_name' | translate }}"
+      />
+        <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error *ngIf="tel.hasError('required')">
+        <span [innerHTML]="'errors.required' | translate"></span>
+      </mat-error>
+
+    </mat-form-field >
+
+
+
+    <button
+      mat-raised-button
+      type="submit"
+      class="green-btn btn-block submit-btn mt-15"
+      [disabled]="!form.valid"
+    >
+     <span *ngIf="!isLoading">{{ "submit" | translate }}</span>
+     <span *ngIf="isLoading" class="spinner-loading"> <mat-spinner [diameter]="40" [strokeWidth]="2" ></mat-spinner></span>
+    </button>
+
+    </div>
+  </form>
+</section>
+<!--
+
+ <picture>
+
+        </picture>
+
+        <label for="file">
+
+        </label>
+
+ -->

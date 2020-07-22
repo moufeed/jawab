@@ -1,0 +1,17 @@
+
+  <mat-toolbar color="primary" class="home-toolbar" *ngIf="mobileQuery.matches">
+    <button mat-icon-button (click)="sideNav.open()"><mat-icon>menu</mat-icon></button>
+    <h1 class="home-app-name">{{'jawab' | translate}}</h1>
+  </mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sideNav class="sidenav" [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+    <app-sidebar (Close)="sideNav.close()"></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main>
+      <router-outlet></router-outlet></main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+
+$mat-jawab: (
+  50: #d2f5ea,
+  100: #aed4c9,
+  200: #8cd1bc,
+  300: #6cbba3,
+  400: #259271,
+  500: #009A6B,
+  600: #007c57,
+  700: #09684b,
+  800: #0a5841,
+  900: #0a5841,
+  A100: #b4f1de,
+  A200: #82f7d2,
+  A400: #02e09a,
+  A700: #00bd81,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+$jawab-primary: mat-palette($mat-jawab);
+$jawab-accent: mat-palette($mat-indigo, A200, A100, A400);
+
+
+$jawab-warn: mat-palette($mat-red);
+
+
+$jawab-theme: mat-light-theme($jawab-primary, $jawab-accent, $jawab-warn);
+
+
+@include angular-material-theme($jawab-theme);
+
+
+
+@import './scss/index';

@@ -1,0 +1,90 @@
+@import "./src/scss/variables";
+@import "./src/scss/helpers/mixins";
+
+.create-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  min-width: 50%;
+  min-height: 60%;
+  box-shadow: 0 0 25px rgba(black, 0.05);
+
+  .avatar{
+    text-align: center;
+  }
+}
+
+.upload-zone {
+  min-height: 100%;
+  display: inline-grid;
+  text-align: center;
+  grid-auto-columns: 50px;
+  grid-auto-rows: 50px;
+  picture {
+    grid-area: 1 / 1 / span 5 / span 5;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #ffff;
+    box-shadow: 0 0 15px rgba(#000, 0.2);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  label {
+    grid-area: 5 / 5;
+    position: relative;
+    box-shadow: 0 0 15px rgba(#000, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background: lighten($dark-green, 7%);
+    transition: all 0.3s;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      background: $dark-green;
+    }
+    input {
+      position: absolute;
+      opacity: 0.2;
+      display: none;
+    }
+    .mat-icon {
+      font-size: 24px;
+    }
+  }
+}
+
+.u-content{
+
+  padding: 25px;
+
+  h3{
+    color: #111;
+    font-weight: 600;
+    text-transform: capitalize;
+    small{
+      color: #999;
+    }
+  }
+  .mat-form-field{
+    width: 100%;
+  }
+
+  .mat-raised-button{
+    padding: 8px 16px;
+    letter-spacing: 1px;
+  }
+}
